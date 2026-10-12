@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Purple Profile 💜</title>
+
+<style>
+:root {
+    --purple: #a77bc8;
+    --dark: #654778;
+    --light: #f8f2ff;
+    --border: #eadcf5;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(145deg, #eee2ff, #d9c5f0, #f9efff);
+    color: var(--dark);
+    padding: 20px 12px;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.page {
+    width: 100%;
+    max-width: 440px;
+    margin: auto;
+}
+
+/* LOGIN */
+
+#loginPage {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    width: 100%;
+    padding: 34px 25px;
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 28px;
+    background: rgba(255,255,255,.78);
+    box-shadow: 0 15px 45px #9d7dbb30;
+    text-align: center;
+}
+
+.login-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.login-card h1 {
+    font-size: 29px;
+    margin-bottom: 10px;
+}
+
+.login-card .subtitle {
+    font-size: 14px;
+    color: #9982a7;
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+.field {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    background: #fdfaff;
+    border-radius: 14px;
+    outline: none;
+}
+
+.field:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px #c6a4e533;
+}
+
+.primary-btn {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(110deg, #bd9cdb, #9063b1);
+    box-shadow: 0 5px 15px #a77bc840;
+}
+
+.primary-btn:active {
+    transform: scale(.98);
+}
+
+.error {
+    color: #c04478;
+    font-size: 13px;
+    margin-top: 14px;
+    min-height: 16px;
+}
+
+.small-note {
+    font-size: 12px;
+    color: #a28cae;
+    margin-top: 24px;
+}
+
+/* PROFILE */
+
+#profilePage {
+    display: none;
+    background: rgba(255,255,255,.91);
+    border: 1px solid white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px #9d7dbb30;
+}
+
+.topbar {
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    border-bottom: 1px solid #f0e7f6;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: -.5px;
+}
+
+.top-actions {
+    display: flex;
+    gap: 17px;
+    font-size: 22px;
+}
+
+.icon-btn {
+    border: none;
+    background: none;
+    color: var(--dark);
+}
+
+.profile-header {
+    padding: 24px 18px 18px;
+}
+
+.profile-main {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #d7b5f1, #9165b7, #f3d8ff);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+    display: block;
+}
+
+.stats {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap: 8px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.stat span {
+    font-size: 11px;
+    color: #8c7697;
+}
+
+.name-area {
+    margin-top: 19px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.name-area strong {
+    font-size: 15px;
+}
+
+.handle {
+    color: #a27db8;
+}
+
+.bio {
+    white-space: pre-line;
+    margin-top: 3px;
+}
+
+.link {
+    color: #9163b1;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 17px;
+}
+
+.profile-actions button {
+    flex: 1;
+    padding: 10px 4px;
+    border: none;
+    border-radius: 10px;
+    background: #eee3f7;
+    color: #624577;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.profile-actions button:first-child {
+    background: #a77bc8;
+    color: white;
+}
+
+.profile-actions button:active {
+    opacity: .8;
+}
+
+/* STORIES */
+
+.stories {
+    display: flex;
+    gap: 17px;
+    overflow-x: auto;
+    padding: 8px 18px 21px;
+    border-bottom: 1px solid #f0e7f6;
+}
+
+.story {
+    min-width: 62px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.story-circle {
+    width: 61px;
+    height: 61px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: #f0e5fa;
+    border: 2px solid #d5b8e9;
+    margin-bottom: 7px;
+}
+
+.story.add .story-circle {
+    border: 2px dashed #b18acb;
+    background: #fffaff;
+}
+
+/* TABS */
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    height: 48px;
+    border-bottom: 1px solid #f0e7f6;
+}
+
+.tab {
+    width: 50%;
+    background: none;
+    border: none;
+    color: #b3a2bd;
+    font-size: 21px;
+    border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+    color: #8558a6;
+    border-bottom-color: #a77bc8;
+}
+
+/* PHOTO GRID */
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3px;
+}
+
+.photo {
+    aspect-ratio: 1 / 1;
+    background: #f0e3fa;
+    overflow: hidden;
+    position: relative;
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .3s;
+}
+
+.photo:active img {
+    transform: scale(.96);
+}
+
+.photo .placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    background: linear-gradient(135deg, #e8d7f7, #f8edff);
+}
+
+.empty-state {
+    display: none;
+    text-align: center;
+    padding: 35px 15px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.bottom-note {
+    text-align: center;
+    padding: 18px;
+    font-size: 11px;
+    color: #b09ab9;
+}
+
+#filePicker {
+    display: none;
+}
+
+@media (max-width: 360px) {
+    .profile-main {
+        gap: 12px;
+    }
+
+    .avatar {
+        width: 78px;
+        height: 78px;
+    }
+
+    .stat strong {
+        font-size: 15px;
+    }
+
+    .stat span {
+        font-size: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- LOGIN SCREEN -->
+    <section id="loginPage">
+        <div class="login-card">
+            <div class="login-icon">💜</div>
+            <h1>Welcome, lovely!</h1>
+            <p class="subtitle">
+                Your little corner of the internet.<br>
+                Log in to enter your profile ♡
+            </p>
+
+            <form id="loginForm">
+                <input
+                    class="field"
+                    id="username"
+                    type="text"
+                    placeholder="Username"
+                    autocomplete="username"
+                    required
+                >
+
+                <input
+                    class="field"
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button class="primary-btn" type="submit">
+                    Log In ✨
+                </button>
+            </form>
+
+            <p class="error" id="errorMessage"></p>
+            <p class="small-note">made with love & lavender ♡</p>
+        </div>
+    </section>
+
+
+    <!-- INSTAGRAM-STYLE PROFILE -->
+    <section id="profilePage">
+
+        <header class="topbar">
+            <span class="logo">my little life ♡</span>
+            <div class="top-actions">
+                <button class="icon-btn" id="addPhotoTop"
+                    aria-label="Add photo">＋</button>
+                <button class="icon-btn" id="logoutTop"
+                    aria-label="Log out">☰</button>
+            </div>
+        </header>
+
+        <div class="profile-header">
+            <div class="profile-main">
+
+                <div class="avatar">
+                    <!-- CHANGE THIS IMAGE PATH -->
+                    <img
+                        id="profilePicture"
+                        src="profile.jpg"
+                        alt="My profile picture"
+                        onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23eadcf5%22/%3E%3Ctext x=%2250%25%22 y=%2258%25%22 font-size=%2244%22 text-anchor=%22middle%22%3E%F0%9F%92%9C%3C/text%3E%3C/svg%3E';"
+                    >
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <strong id="postCount">6</strong>
+                        <span>posts</span>
+                    </div>
+                    <div class="stat">
+                        <strong>248</strong>
+                        <span>followers</span>
+                    </div>
+                    <div class="stat">
+                        <strong>180</strong>
+                        <span>following</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="name-area">
+                <strong>Jannen Delfino</strong>
+                <div class="handle">@j.nyn</div>
+
+                <div class="bio" id="bioText">♡ just a girl with big dreams
+☁️ collecting little moments
+💜 choosing growth and happiness</div>
+
+                <div class="link">✧ living my own story ✧</div>
+            </div>
+
+            <div class="profile-actions">
+                <button id="editProfile">Edit Profile</button>
+                <button id="shareProfile">Share Profile</button>
+                <button id="addPhoto">＋ Photo</button>
+            </div>
+        </div>
+
+        <!-- STORY HIGHLIGHTS -->
+        <div class="stories">
+            <div class="story add" id="addStory">
+                <div class="story-circle">＋</div>
+                <span>New</span>
+            </div>
+            <div class="story">
+                <div class="story-circle">🌷</div>
+                <span>me</span>
+            </div>
+            <div class="story">
+                <div class="story-circle">📸</div>
+                <span>memories</span>
+            </div>
+            <div class="story">
+                <div class="story-circle">🦋</div>
+                <span>moments</span>
+            </div>
+            <div class="story">
+                <div class="story-circle">💜</div>
+                <span>favorites</span>
+            </div>
+        </div>
+
+        <!-- PROFILE TABS -->
+        <div class="tabs">
+            <button class="tab active" id="gridTab"
+                aria-label="Photo grid">▦</button>
+            <button class="tab" id="tagTab"
+                aria-label="Tagged photos">♙</button>
+        </div>
+
+        <!-- PHOTO GRID -->
+        <div class="photo-grid" id="photoGrid">
+
+            <!-- Replace these with your own image paths -->
+            <div class="photo">
+                <img src="photo1.jpeg" alt="My photo 1"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none">🌷</div>
+            </div>
+
+            <div class="photo">
+                <img src="photo2.jpg" alt="My photo 2"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none">🦋</div>
+            </div>
+
+            <div class="photo">
+                <img src="photo3.jpeg" alt="My photo 3"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none">☁️</div>
+            </div>
+
+            <div class="photo">
+                <img src="photo4.jpeg" alt="My photo 4"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none">🎀</div>
+            </div>
+
+            <div class="photo">
+                <img src="photo5.jpg" alt="My photo 5"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none">🌸</div>
+            </div>
+
+            <div class="photo">
+                <img src="photo6.jpg" alt="My photo 6"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder" style="display:none">💗</div>
+            </div>
+
+        </div>
+
+        <div class="empty-state" id="taggedState">
+            <div style="font-size:35px">♡</div>
+            No tagged photos yet.
+        </div>
+
+        <div class="bottom-note">you are enough, always ♡</div>
+
+        <input id="filePicker" type="file"
+            accept="image/*" multiple>
+
+    </section>
+
+</div>
+
+
+<script>
+// DEMO LOGIN ONLY — NOT SECURE FOR REAL ACCOUNTS
+const LOGIN_USERNAME = "Jannen";
+const LOGIN_PASSWORD = "263735";
+
+const loginPage = document.getElementById("loginPage");
+const profilePage = document.getElementById("profilePage");
+const loginForm = document.getElementById("loginForm");
+const errorMessage = document.getElementById("errorMessage");
+
+loginForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (username === LOGIN_USERNAME &&
+        password === LOGIN_PASSWORD) {
+
+        loginPage.style.display = "none";
+        profilePage.style.display = "block";
+        errorMessage.textContent = "";
+
+    } else {
+        errorMessage.textContent =
+            "Oops! Incorrect username or password. Try again 💜";
+    }
+});
+
+function logout() {
+    profilePage.style.display = "none";
+    loginPage.style.display = "flex";
+    loginForm.reset();
+}
+
+document.getElementById("logoutTop").addEventListener("click", logout);
+
+const filePicker = document.getElementById("filePicker");
+
+// Change profile picture using a local image.
+document.getElementById("profilePicture").addEventListener("click", function() {
+    filePicker.multiple = false;
+    filePicker.dataset.mode = "avatar";
+    filePicker.click();
+});
+
+document.getElementById("addPhoto").addEventListener("click", choosePhotos);
+document.getElementById("addPhotoTop").addEventListener("click", choosePhotos);
+
+function choosePhotos() {
+    filePicker.multiple = true;
+    filePicker.dataset.mode = "posts";
+    filePicker.click();
+}
+
+filePicker.addEventListener("change", function() {
+    const files = Array.from(this.files || []);
+    const mode = this.dataset.mode;
+
+    if (mode === "avatar" && files[0]) {
+        document.getElementById("profilePicture").src =
+            URL.createObjectURL(files[0]);
+    }
+
+    if (mode === "posts") {
+        const grid = document.getElementById("photoGrid");
+
+        files.forEach(function(file) {
+            const url = URL.createObjectURL(file);
+            const card = document.createElement("div");
+            card.className = "photo";
+
+            const img = document.createElement("img");
+            img.src = url;
+            img.alt = "My uploaded photo";
+
+            card.appendChild(img);
+            grid.prepend(card);
+        });
+
+        updatePostCount();
+        showGrid();
+    }
+
+    this.value = "";
+});
+
+function updatePostCount() {
+    document.getElementById("postCount").textContent =
+        document.getElementById("photoGrid").children.length;
+}
+
+function showGrid() {
+    document.getElementById("photoGrid").style.display = "grid";
+    document.getElementById("taggedState").style.display = "none";
+    document.getElementById("gridTab").classList.add("active");
+    document.getElementById("tagTab").classList.remove("active");
+}
+
+document.getElementById("gridTab").addEventListener("click", showGrid);
+
+document.getElementById("tagTab").addEventListener("click", function() {
+    document.getElementById("photoGrid").style.display = "none";
+    document.getElementById("taggedState").style.display = "block";
+    this.classList.add("active");
+    document.getElementById("gridTab").classList.remove("active");
+});
+
+// Edit the profile's display name and bio.
+document.getElementById("editProfile").addEventListener("click", function() {
+    const currentName = document.querySelector(".name-area strong").textContent;
+    const currentBio = document.getElementById("bioText").textContent;
+
+    const newName = prompt("Enter your display name:", currentName);
+    if (newName === null) return;
+
+    const newBio = prompt("Write your bio:", currentBio);
+    if (newBio === null) return;
+
+    if (newName.trim()) {
+        document.querySelector(".name-area strong").textContent = newName.trim();
+    }
+
+    document.getElementById("bioText").textContent = newBio;
+});
+
+// Share profile details.
+document.getElementById("shareProfile").addEventListener("click", async function() {
+    const name = document.querySelector(".name-area strong").textContent;
+    const handle = document.querySelector(".handle").textContent;
+    const shareText = name + " " + handle + "\nVisit my little profile! 💜";
+
+    if (navigator.share) {
+        try {
+            await navigator.share({ title: "My Profile", text: shareText });
+        } catch (error) {
+            // Sharing cancelled.
+        }
+    } else if (navigator.clipboard) {
+        try {
+            await navigator.clipboard.writeText(shareText);
+            alert("Profile details copied!");
+        } catch (error) {
+            prompt("Copy your profile details:", shareText);
+        }
+    } else {
+        prompt("Copy your profile details:", shareText);
+    }
+});
+
+// Add a simple story highlight.
+document.getElementById("addStory").addEventListener("click", function() {
+    const label = prompt("Name your new highlight:");
+    if (!label || !label.trim()) return;
+
+    const emoji = prompt("Choose an emoji for it:", "💜") || "💜";
+    const story = document.createElement("div");
+    story.className = "story";
+
+    const circle = document.createElement("div");
+    circle.className = "story-circle";
+    circle.textContent = emoji;
+
+    const caption = document.createElement("span");
+    caption.textContent = label.trim();
+
+    story.append(circle, caption);
+    this.parentElement.appendChild(story);
+});
+</script>
+
+</body>
+</html>
